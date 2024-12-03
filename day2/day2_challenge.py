@@ -39,7 +39,7 @@ def part2(reports):
             safe += 1  # Count reports that can be fixed
     return safe
 
-# Read the reports from the input file and store them as lists of integers
+# Read the reports from the input file and store them as list of integers
 reports = []
 with open('day2_input.txt', 'r') as locations:
     for line in locations:
