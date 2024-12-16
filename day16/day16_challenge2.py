@@ -11,16 +11,16 @@ def solve(mazeLines):
     cols = len(mazeLines[0])
 
     directions = [
-        (0, 1),   # right
-        (1, 0),   # down
-        (0, -1),  # left
-        (-1, 0)   # up
+        (0, 1),   # East
+        (1, 0),   # South
+        (0, -1),  # West
+        (-1, 0)   # North
     ]
 
     start = None
     end = None
     
-    # Identify down and right
+    # Identify S and E
     for r in range(rows):
         for c in range(cols):
             ch = mazeLines[r][c]
@@ -34,7 +34,7 @@ def solve(mazeLines):
     INF = float('inf')
     dist = [[[INF]*4 for _ in range(cols)] for __ in range(rows)]
     
-    startDir = 0  # The reindeer start facing right = 0
+    startDir = 0  # The reindeer start facing East = 0
     dist[start[0]][start[1]][startDir] = 0
     
     pq = [(0, start[0], start[1], startDir)]
@@ -75,7 +75,7 @@ def solve(mazeLines):
             dist[r][c][rightDir] = newCost
             heapq.heappush(pq, (newCost, r, c, rightDir))
 
-    # Find minimal cost to reach right (over all 4 directions)
+    # Find minimal cost to reach E (over all 4 directions)
     minCostEnd = min(dist[end[0]][end[1]][d] for d in range(4))
 
     # Mark all cells that lie on at least one best path
